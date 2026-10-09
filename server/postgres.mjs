@@ -1,4 +1,6 @@
 import pg from 'pg';
+import { rootCertificates } from 'node:tls';
+import supabaseCa from './supabase-ca.mjs';
 pg.types.setTypeParser(20, value => Number(value));
 
 // Keep the tested application queries shared with the local SQLite runtime.
@@ -67,7 +69,7 @@ export function cloudDatabase() {
                 database: process.env.PGDATABASE || 'postgres', user: process.env.PGUSER, password: process.env.PGPASSWORD
             }),
             max: 3, idleTimeoutMillis: 10000, connectionTimeoutMillis: 10000,
-            ssl: { rejectUnauthorized: true },
+            ssl: { rejectUnauthorized: true, ca: [...rootCertificates, supabaseCa] },
             application_name: 'vita-pitchday'
         });
         database = databaseFromPool(pool);
