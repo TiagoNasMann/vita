@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node scripts/generate-assets.mjs",
+  "outputDirectory": "web",
+  "functions": {
+    "api/entry.mjs": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/entry?__vita_path=$1"
+    }
+  ]
+}

@@ -12,7 +12,8 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
     "local": "node server/local.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "db:seed:cloud": "node scripts/seed-cloud.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
@@ -39,7 +40,8 @@
     "tailwind-merge": "3.6.0",
     "vaul": "^1.1.2",
     "zod": "^3.25.76",
-    "bcryptjs": "3.0.3"
+    "bcryptjs": "3.0.3",
+    "pg": "8.16.3"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",
@@ -61,7 +63,8 @@
     "typescript": "5.9.3",
     "vinext": "1.0.0-beta.5",
     "vite": "8.0.13",
-    "wrangler": "4.92.0"
+    "wrangler": "4.92.0",
+    "@electric-sql/pglite": "0.3.14"
   },
   "type": "module",
   "overrides": {

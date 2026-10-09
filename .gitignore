@@ -10,3 +10,5 @@ dist/
 .DS_Store
 *.tar.gz
 server/assets.generated.mjs
+
+.vercel/

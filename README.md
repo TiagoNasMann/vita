@@ -67,3 +67,16 @@ O banco local usa SQLite. A adaptação para Cloudflare D1 usa o mesmo esquema e
 O seed hospedado é uma operação explícita em `/api/setup`, protegida por uma chave temporária `VITA_SETUP_KEY`, nunca colocada no código. Ela só pode inserir os fixtures uma vez. A publicação futura deverá aplicar as migrações, inserir os fixtures e remover essa chave.
 
 Para a versão hospedada apresentar apenas o login empresarial, o acesso Sites também precisará ser configurado para permitir a página de entrada sem autenticação ChatGPT. Essa alteração será feita junto da publicação, depois da aprovação. Até lá, o site publicado e a branch main permanecem na versão anterior.
+
+
+## Vercel + Supabase
+
+A publicação na Vercel utiliza `api/entry.mjs` e o banco PostgreSQL da Supabase. O ambiente local continua usando SQLite, com a mesma lógica de negócio.
+
+1. Criar um projeto Supabase dedicado à VITA.
+2. Aplicar `supabase/migrations/202610090001_vita_b2b.sql` uma única vez no novo banco. As tabelas ficam no schema privado `vita`, sem acesso de navegador pela API pública da Supabase.
+3. Configurar `DATABASE_URL` somente no ambiente do servidor da Vercel, com a conexão pooler da Supabase e TLS. Não colocar credenciais no GitHub ou no código do navegador.
+4. Inicializar as seis empresas fictícias com `pnpm db:seed:cloud`, no ambiente que possui `DATABASE_URL`.
+5. Importar a branch `feature/logins-b2b` na Vercel. `vercel.json` gera os recursos e encaminha páginas e APIs para o servidor.
+
+Os testes PostgreSQL validam login, isolamento entre instituições, conversa, reserva concorrente, cancelamento e recebimento de volumes em litros. Publicar esta branch não modifica a `main`.
