@@ -1,6 +1,12 @@
 node_modules/
-.openai/local/
+dist/
+.next/
+.vinext/
+.wrangler/
+.sites-runtime/
+.data/
 .env*
 !.env.example
 .DS_Store
 *.tar.gz
+server/assets.generated.mjs

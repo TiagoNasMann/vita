@@ -1,0 +1,116 @@
+{
+  "companies": [
+    {
+      "id": "HC-001",
+      "name": "Hemocentro Aurora",
+      "kind": "hemocentro",
+      "city": "Uberlândia / MG"
+    },
+    {
+      "id": "HC-002",
+      "name": "Hemocentro Horizonte",
+      "kind": "hemocentro",
+      "city": "Araguari / MG"
+    },
+    {
+      "id": "HC-003",
+      "name": "Hemocentro Essência",
+      "kind": "hemocentro",
+      "city": "Uberaba / MG"
+    },
+    {
+      "id": "HP-001",
+      "name": "Hospital Vida Nova",
+      "kind": "hospital",
+      "city": "Uberlândia / MG"
+    },
+    {
+      "id": "HP-002",
+      "name": "Hospital São Horizonte",
+      "kind": "hospital",
+      "city": "Araguari / MG"
+    },
+    {
+      "id": "HP-003",
+      "name": "Hospital Integra",
+      "kind": "hospital",
+      "city": "Uberaba / MG"
+    }
+  ],
+  "users": [
+    {
+      "id": "USER-HC-001",
+      "company_id": "HC-001",
+      "name": "Administrador Hemocentro Aurora",
+      "email": "admin@hemocentro-aurora.example.com",
+      "password_hash": "$2b$12$eJ1YkXKEBFq80UFP2HCyoe/Ye9v3/I3yTC6JO11IA4JoHsffJjyFK",
+      "role": "admin"
+    },
+    {
+      "id": "USER-HC-002",
+      "company_id": "HC-002",
+      "name": "Administrador Hemocentro Horizonte",
+      "email": "admin@hemocentro-horizonte.example.com",
+      "password_hash": "$2b$12$etvQTM/FTvPjcAUtuZN5OuSRPBZqL8quGeIrTDNk74wfcjyYAcUVG",
+      "role": "admin"
+    },
+    {
+      "id": "USER-HC-003",
+      "company_id": "HC-003",
+      "name": "Administrador Hemocentro Essência",
+      "email": "admin@hemocentro-essencia.example.com",
+      "password_hash": "$2b$12$/3R9xCCYUDCDHCYv8dx1EO0bT1MNLYBIfFSpsXlmmYAbLXfToAHM2",
+      "role": "admin"
+    },
+    {
+      "id": "USER-HP-001",
+      "company_id": "HP-001",
+      "name": "Administrador Hospital Vida Nova",
+      "email": "admin@hospital-vida-nova.example.com",
+      "password_hash": "$2b$12$yJMy1p52pga8LJtXenZ6auv83zeP0T.FZz.hy93b4MxIu02BHCGV6",
+      "role": "admin"
+    },
+    {
+      "id": "USER-HP-002",
+      "company_id": "HP-002",
+      "name": "Administrador Hospital São Horizonte",
+      "email": "admin@hospital-sao-horizonte.example.com",
+      "password_hash": "$2b$12$1HaENf9W8lgSOiidIpOKyu7UOipw3VTLUBv.jwz2em8x1f0mKMFke",
+      "role": "admin"
+    },
+    {
+      "id": "USER-HP-003",
+      "company_id": "HP-003",
+      "name": "Administrador Hospital Integra",
+      "email": "admin@hospital-integra.example.com",
+      "password_hash": "$2b$12$uTucK4wW2QxxkQkw2iIRJ.P/oPQQJqUhEOf8JXuBycmipUPuE4OjS",
+      "role": "admin"
+    }
+  ],
+  "connections": [
+    [
+      "HP-001",
+      "HC-001"
+    ],
+    [
+      "HP-003",
+      "HC-001"
+    ],
+    [
+      "HP-002",
+      "HC-002"
+    ],
+    [
+      "HP-001",
+      "HC-002"
+    ],
+    [
+      "HP-003",
+      "HC-003"
+    ],
+    [
+      "HP-002",
+      "HC-003"
+    ]
+  ]
+}

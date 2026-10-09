@@ -1,0 +1,77 @@
+VITA — CONTAS EMPRESARIAIS FICTÍCIAS
+Ambiente: demonstração / desenvolvimento
+
+Estas empresas, endereços e senhas são fictícios. Os endereços usam
+example.com, domínio reservado para exemplos. Estas credenciais já estão conectadas ao login empresarial e ao banco
+local de demonstração.
+Cada empresa terá seu próprio ambiente e poderá interagir com outras
+instituições por conexões aceitas e permissões explícitas.
+
+HEMOCENTROS
+
+01. Hemocentro Aurora — instituição fictícia
+Empresa ID: HC-001
+Perfil da empresa: hemocentro
+Usuário: Administrador Aurora
+E-mail / login: admin@hemocentro-aurora.example.com
+Senha de demonstração: VitaDemo!Aurora2026
+Papel: administrador da empresa
+Região simulada: Uberlândia / MG
+
+02. Hemocentro Horizonte — instituição fictícia
+Empresa ID: HC-002
+Perfil da empresa: hemocentro
+Usuário: Administrador Horizonte
+E-mail / login: admin@hemocentro-horizonte.example.com
+Senha de demonstração: VitaDemo!Horizonte2026
+Papel: administrador da empresa
+Região simulada: Araguari / MG
+
+03. Hemocentro Essência — instituição fictícia
+Empresa ID: HC-003
+Perfil da empresa: hemocentro
+Usuário: Administrador Essência
+E-mail / login: admin@hemocentro-essencia.example.com
+Senha de demonstração: VitaDemo!Essencia2026
+Papel: administrador da empresa
+Região simulada: Uberaba / MG
+
+HOSPITAIS
+
+04. Hospital Vida Nova — instituição fictícia
+Empresa ID: HP-001
+Perfil da empresa: hospital
+Usuário: Administrador Vida Nova
+E-mail / login: admin@hospital-vida-nova.example.com
+Senha de demonstração: VitaDemo!VidaNova2026
+Papel: administrador da empresa
+Região simulada: Uberlândia / MG
+
+05. Hospital São Horizonte — instituição fictícia
+Empresa ID: HP-002
+Perfil da empresa: hospital
+Usuário: Administrador São Horizonte
+E-mail / login: admin@hospital-sao-horizonte.example.com
+Senha de demonstração: VitaDemo!SaoHorizonte2026
+Papel: administrador da empresa
+Região simulada: Araguari / MG
+
+06. Hospital Integra — instituição fictícia
+Empresa ID: HP-003
+Perfil da empresa: hospital
+Usuário: Administrador Integra
+E-mail / login: admin@hospital-integra.example.com
+Senha de demonstração: VitaDemo!Integra2026
+Papel: administrador da empresa
+Região simulada: Uberaba / MG
+
+CENÁRIO CONFIGURADO PARA A DEMONSTRAÇÃO
+- Aurora conectado a Vida Nova e Integra.
+- Horizonte conectado a São Horizonte e Vida Nova.
+- Essência conectado a Integra e São Horizonte.
+- Conexões aceitas pelos dois lados; nenhum estoque privado é público.
+- Pedidos de exemplo sem nomes de pacientes ou informações clínicas pessoais.
+- Senhas de demonstração não devem ser usadas em produção.
+- A autenticação verifica credenciais no servidor e armazena apenas
+  hashes bcrypt das senhas no banco.
+- Volumes são exibidos em litros e armazenados em mililitros inteiros.
