@@ -75,7 +75,7 @@ A publicação na Vercel utiliza `api/entry.mjs` e o banco PostgreSQL da Supabas
 
 1. Criar um projeto Supabase dedicado à VITA.
 2. Aplicar `supabase/migrations/202610090001_vita_b2b.sql` uma única vez no novo banco. As tabelas ficam no schema privado `vita`, sem acesso de navegador pela API pública da Supabase.
-3. Configurar `DATABASE_URL` somente no ambiente do servidor da Vercel, com a conexão pooler da Supabase e TLS. Não colocar credenciais no GitHub ou no código do navegador.
+3. Configurar `DATABASE_URL` ou os campos separados `PGHOST`, `PGPORT`, `PGDATABASE`, `PGUSER` e `PGPASSWORD` somente no ambiente do servidor da Vercel, com a conexão pooler da Supabase e TLS. Não colocar credenciais no GitHub ou no código do navegador.
 4. Inicializar as seis empresas fictícias com `pnpm db:seed:cloud`, no ambiente que possui `DATABASE_URL`.
 5. Importar a branch `feature/logins-b2b` na Vercel. `vercel.json` gera os recursos e encaminha páginas e APIs para o servidor.
 

@@ -12,6 +12,7 @@ export function postgresQuery(source, previousChanges = 0) {
             .replace('ELSE count+1', 'ELSE auth_limits.count+1')
             .replace('ELSE reset_at END', 'ELSE auth_limits.reset_at END');
     }
+    sql = sql.replace(/\b(FROM|JOIN|INTO|UPDATE)\s+(companies|users|sessions|auth_limits|connections|stocks|requests|messages|events|audit|setup)\b/gi, '$1 vita.$2');
     let parameter = 0;
     return sql.replace(/\?/g, () => '$' + (++parameter));
 }
@@ -57,12 +58,17 @@ export function databaseFromPool(pool) {
 
 let database;
 export function cloudDatabase() {
-    if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is required');
+    if (!process.env.DATABASE_URL && !(process.env.PGHOST && process.env.PGUSER && process.env.PGPASSWORD))
+        throw new Error('PostgreSQL connection is required');
     if (!database) {
-        const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL,
+        const pool = new pg.Pool({
+            ...(process.env.DATABASE_URL ? { connectionString: process.env.DATABASE_URL } : {
+                host: process.env.PGHOST, port: Number(process.env.PGPORT || 6543),
+                database: process.env.PGDATABASE || 'postgres', user: process.env.PGUSER, password: process.env.PGPASSWORD
+            }),
             max: 3, idleTimeoutMillis: 10000, connectionTimeoutMillis: 10000,
             ssl: { rejectUnauthorized: true },
-            application_name: 'vita-pitchday', options: '-c search_path=vita'
+            application_name: 'vita-pitchday'
         });
         database = databaseFromPool(pool);
     }
