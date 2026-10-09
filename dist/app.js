@@ -1,0 +1,11 @@
+"use strict";
+document.querySelectorAll('[data-dialog]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.dialog)?.showModal()));
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
+document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
+const titles={overview:'Visão geral',campaigns:'Campanhas',centers:'Hemocentros',about:'Sobre o projeto'};
+function showView(view){if(!titles[view])return;document.querySelectorAll('[data-page]').forEach(p=>p.hidden=p.dataset.page!==view);document.querySelectorAll('.nav-item').forEach(n=>{n.classList.toggle('active',n.dataset.view===view);n.setAttribute('aria-current',n.dataset.view===view?'page':'false');});const crumb=document.getElementById('breadcrumb');if(crumb)crumb.textContent=titles[view];history.replaceState(null,'','#'+view);window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+if(document.querySelector('[data-page]'))showView(location.hash.slice(1)||'overview');
+const types=[['O−',19,'critical','Atenção'],['O+',32,'warning','Alerta'],['A−',24,'critical','Atenção'],['A+',68,'stable','Estável'],['B−',57,'stable','Estável'],['B+',72,'stable','Estável'],['AB−',62,'stable','Estável'],['AB+',83,'stable','Estável']];
+function drawStocks(filter='all'){const grid=document.getElementById('blood-grid');if(!grid)return;grid.replaceChildren();types.filter(t=>filter==='all'||(filter==='stable'?t[2]==='stable':t[2]!=='stable')).forEach(t=>{const card=document.createElement('div');card.className='blood-type '+t[2];const name=document.createElement('strong');name.textContent=t[0];const label=document.createElement('span');label.textContent=t[3];const bar=document.createElement('div');bar.className='bar';const fill=document.createElement('i');fill.style.width=t[1]+'%';bar.append(fill);card.append(name,label,bar);grid.append(card);});}
+drawStocks();document.getElementById('stock-filter')?.addEventListener('change',e=>drawStocks(e.target.value));
