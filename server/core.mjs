@@ -208,7 +208,7 @@ export async function handleApi(request, db, env = {}, data) {
     catch (error) {
         if (error instanceof HttpError)
             return json({ error: error.message }, error.status);
-        console.error('Vita API failure', error.name);
+        console.error('Vita API failure', error.name, error.code || 'unknown');
         return json({ error: 'Não foi possível concluir a operação.' }, 500);
     }
 }
